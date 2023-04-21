@@ -1,4 +1,4 @@
-package PokerHandSimulator;
+package classintro.PokerHandSimulator;
 
 import java.util.Random;
 
@@ -24,8 +24,8 @@ Random rand = new Random();
 
     public void deckBuilder(int suit) {
         if (suit < 4) {
-            for (int i = 0; i < 14; i++) {
-                this.deck[i + (suit * 14)] = addCard(i, suit);
+            for (int i = 0; i < 13; i++) {
+                this.deck[i + (suit * 13)] = addCard(i, suit);
             }
             deckBuilder(suit+1);
         }

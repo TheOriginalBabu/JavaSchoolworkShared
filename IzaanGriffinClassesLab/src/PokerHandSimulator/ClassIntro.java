@@ -1,5 +1,5 @@
 
-package PokerHandSimulator;
+package classintro.PokerHandSimulator;
 
 import java.util.Arrays;
 

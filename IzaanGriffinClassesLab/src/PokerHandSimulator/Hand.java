@@ -1,42 +1,27 @@
-package PokerHandSimulator;
+package classintro.PokerHandSimulator;
 
 import java.util.Random;
 
 public class Hand {
-    public Card card1;
-    public Card card2;
-    public Card card3;
-    public Card card4;
-    public Card card5;
+    public Card[] hand = new Card[5];
 
-    public Hand() {
-        buildHand();
+    public Hand(Deck deck) {
+        buildHand(deck);
     }
 
 
-    public void buildHand() {
+    public void buildHand(Deck deck) {
         Random rand = new Random();
-        Deck deck = new Deck(); // temp
-        int BoundVar;
-
-        BoundVar = rand.nextInt(52);
-        card1 = deck.get(BoundVar);
-        deck.removeCard(BoundVar);
-
-        BoundVar = rand.nextInt(52);
-        card2 = deck.get(BoundVar);
-        deck.removeCard(BoundVar);
-
-        BoundVar = rand.nextInt(52);
-        card3 = deck.get(BoundVar);
-        deck.removeCard(BoundVar);
-
-        BoundVar = rand.nextInt(52);
-        card4 = deck.get(BoundVar);
-        deck.removeCard(BoundVar);
-
-        BoundVar = rand.nextInt(52);
-        card5 = deck.get(BoundVar);
-        deck.removeCard(BoundVar);
+        for (int i = 0; i < hand.length; i++) {
+            int tempIndex;
+            while (true) {
+                tempIndex = rand.nextInt(52);
+                if (deck.get(tempIndex) != null) {
+                    hand[i] = deck.get(tempIndex);
+                    break;
+                }
+            }
+            deck.removeCard(tempIndex);
+        }
     }
 }
