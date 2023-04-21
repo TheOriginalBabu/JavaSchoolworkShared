@@ -2,25 +2,31 @@ package PokerHandSimulator;
 
 public class Deck {
 
-    public String[][] cards = new String[52][2];
+    public Card[] deck = new Card[52];
 
     public Deck() {
-
+        deckBuilder(0);
     }
 
-    public Card addCard(String suit, String value) {
-        Card card = new Card(value, suit);
-        return card;
+    public Card addCard(String value, String suit) {
+        return new Card(value, suit);
     }
 
-    public Card addCard(String suit, int value) {
-        Card card = new Card(value, suit);
-        return card;
+    public Card addCard(int value, int suit) {
+        return new Card(value, suit);
     }
 
-    public void deckBuilder(String suit, int suitCount) {
-        for (int i = 0; i < 14; i++) {
-            cards[i+(suitCount*14)] = addCard(suit, i);
+    public void deckBuilder(int suit) {
+        if (suit < 4) {
+            for (int i = 0; i < 14; i++) {
+                deck[i + (suit * 14)] = addCard(i, suit);
+            }
+            deckBuilder(suit+1);
         }
+
+    }
+
+    public Card get(int cardIndex) {
+        return deck[cardIndex];
     }
 }

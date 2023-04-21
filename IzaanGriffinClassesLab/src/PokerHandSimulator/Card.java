@@ -39,6 +39,14 @@ public class Card {
         this.value = newValue;
         this.suit = newSuit;
     }
+
+    public Card(int newValue, int newSuit){
+        //this refers to the instance of the class.
+        //in other words, the Card object that is being created here
+        this.value = values[newValue];
+        this.suit = suits[newSuit];
+    }
+
     //this is an overloaded constructor allows us to create Card objects with 
     //random values using the methods below
     public Card(){
