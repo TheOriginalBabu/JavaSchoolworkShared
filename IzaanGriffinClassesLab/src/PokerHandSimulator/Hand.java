@@ -15,9 +15,28 @@ public class Hand {
     public void buildHand() {
         Random rand = new Random();
         Deck deck = new Deck(); // temp
-        int BoundVar = rand.nextInt(52);
+        int BoundVar;
 
+
+        BoundVar = rand.nextInt(52);
         card1 = deck.get(BoundVar);
+        deck.removeCard(BoundVar);
+
+        BoundVar = rand.nextInt(52);
+        card2 = deck.get(BoundVar);
+        deck.removeCard(BoundVar);
+
+        BoundVar = rand.nextInt(52);
+        card3 = deck.get(BoundVar);
+        deck.removeCard(BoundVar);
+
+        BoundVar = rand.nextInt(52);
+        card4 = deck.get(BoundVar);
+        deck.removeCard(BoundVar);
+
+        BoundVar = rand.nextInt(52);
+        card5 = deck.get(BoundVar);
+        deck.removeCard(BoundVar);
         
 
 
