@@ -1,4 +1,4 @@
-package classintro; //part of the same package
+package PokerHandSimulator;
 
 import java.util.Arrays;
 
