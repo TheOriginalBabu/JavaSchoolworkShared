@@ -40,6 +40,11 @@ public class Card {
         this.suit = newSuit;
     }
 
+    /**
+     * This method will change a card into a new chosen card. It is overloaded to
+     * allow for a random card to be created
+     * @param newSuit the suit to change the card to
+     */
     public Card(int newValue, int newSuit){
         //this refers to the instance of the class.
         //in other words, the Card object that is being created here
