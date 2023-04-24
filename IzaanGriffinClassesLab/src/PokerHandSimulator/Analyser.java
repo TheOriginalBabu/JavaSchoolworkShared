@@ -1,4 +1,4 @@
-package classintro.PokerHandSimulator;
+package PokerHandSimulator;
 
 public class Analyser {
 
