@@ -11,6 +11,9 @@ public class Deck {
         deckBuilder(0);
     }
 
+    public Deck(boolean build) {
+    }
+
     /**
      * Adds a card to the deck using string values
      * @param value the value of the card
@@ -58,7 +61,7 @@ public class Deck {
      * @return the cloned deck
      */
     public Deck clone() {
-        Deck tempDeck = new Deck();
+        Deck tempDeck = new Deck(false);
         for (int i = 0; i < deck.length; i++) {
             tempDeck.deck[i] = deck[i];
         }
