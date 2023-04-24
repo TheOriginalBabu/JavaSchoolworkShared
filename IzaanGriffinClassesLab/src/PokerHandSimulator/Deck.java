@@ -1,4 +1,4 @@
-package PokerHandSimulator;
+package classintro.PokerHandSimulator;
 
 public class Deck implements Cloneable {
 
