@@ -9,7 +9,6 @@ public class Analyser {
      * Constructor for the Analyser class
      */
     public Analyser() {
-        //todo implement constructor
     }
 
     /**
@@ -25,6 +24,11 @@ public class Analyser {
      * @return the best hand
      */
     public String bestHandFinder(Hand hand) {
+        for (int i = 0; i < hand.hand.length; i++) {
+            values[i] = Integer.parseInt(hand.hand[i].value);
+            suits[i] = hand.hand[i].suit;
+        }
+
         sortingAlgorithm(values);
         if (royalFlushChecker()) {
             return "Royal Flush";
