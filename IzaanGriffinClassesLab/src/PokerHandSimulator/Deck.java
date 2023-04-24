@@ -1,17 +1,16 @@
 package classintro.PokerHandSimulator;
 
-public class Deck {
+public class Deck implements Cloneable {
 
     public Card[] deck = new Card[52];
 
     /**
      * Constructor for the Deck class
      */
-    public Deck() {
-        deckBuilder(0);
-    }
-
     public Deck(boolean build) {
+        if (build) {
+            deckBuilder();
+        }
     }
 
     /**
@@ -44,14 +43,12 @@ public class Deck {
 
     /**
      * Builds the deck
-     * @param suit the suit of the card
      */
-    public void deckBuilder(int suit) {
-        if (suit < 4) {
+    public void deckBuilder() {
+        for (int suit = 0 ; suit < 4; suit++) {
             for (int i = 0; i < 13; i++) {
                 this.deck[i + (suit * 13)] = addCard(i, suit);
             }
-            deckBuilder(suit+1);
         }
 
     }
@@ -60,13 +57,11 @@ public class Deck {
      * Clones the deck
      * @return the cloned deck
      */
-    public Deck clone() {
-        Deck tempDeck = new Deck(false);
-        for (int i = 0; i < deck.length; i++) {
-            tempDeck.deck[i] = deck[i];
-        }
-        return tempDeck;
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
+
 
     /**
      * Gets the card at the specified index
