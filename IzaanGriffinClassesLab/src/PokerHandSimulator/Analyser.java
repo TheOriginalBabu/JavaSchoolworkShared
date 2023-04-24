@@ -9,15 +9,7 @@ public class Analyser {
      * Constructor for the Analyser class
      */
     public Analyser() {
-        Hand hand= new Hand(new Deck());
-
-        for (int i = 0; i<5; i++) {
-            values[i] = Integer.parseInt(hand.hand[i].value);
-            suits[i] = hand.hand[i].suit;
-        }
-
-        sortingAlgorithm(values);
-        String bestHand = bestHandFinder();
+        //todo implement constructor
     }
 
     /**
@@ -32,7 +24,8 @@ public class Analyser {
      * Finds the best hand from the hand
      * @return the best hand
      */
-    public String bestHandFinder() {
+    public String bestHandFinder(Hand hand) {
+        sortingAlgorithm(values);
         if (royalFlushChecker()) {
             return "Royal Flush";
         } else if (straightFlushChecker()) {

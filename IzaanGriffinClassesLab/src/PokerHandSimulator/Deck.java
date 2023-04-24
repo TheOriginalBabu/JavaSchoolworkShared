@@ -54,6 +54,18 @@ public class Deck {
     }
 
     /**
+     * Clones the deck
+     * @return the cloned deck
+     */
+    public Deck clone() {
+        Deck tempDeck = new Deck();
+        for (int i = 0; i < deck.length; i++) {
+            tempDeck.deck[i] = deck[i];
+        }
+        return tempDeck;
+    }
+
+    /**
      * Gets the card at the specified index
      * @param cardIndex the index of the card
      * @return the card at the specified index
