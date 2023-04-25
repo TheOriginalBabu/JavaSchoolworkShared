@@ -58,8 +58,8 @@ public class Analyser {
      * @return true if the hand is a royal flush
      */
     private boolean royalFlushChecker() {
-        //todo implement royal flush checker
-        return false;
+        //royal flush is a straight flush with a high card of 10
+        return (flushChecker() && straightChecker() && highCardChecker().equals("ACE"));
     }
 
     /**
@@ -67,8 +67,7 @@ public class Analyser {
      * @return true if the hand is a straight flush
      */
     private boolean straightFlushChecker() {
-        //todo implement straight flush checker
-        return false;
+        return (flushChecker() && straightChecker());
     }
 
     /**
@@ -76,8 +75,12 @@ public class Analyser {
      * @return true if the hand is a four of a kind
      */
     private boolean fourKindChecker() {
-        //todo implement four of a kind checker
-        return false;
+        // checks if have 4 cards with same value
+        for (int i = 0; i < values.length - 3; i++) {
+            if (values[i] == values[i + 1] && values[i + 1] == values[i + 2] && values[i + 2] == values[i + 3]) {
+                return true;
+            }
+        }
     }
 
     /**
@@ -85,8 +88,8 @@ public class Analyser {
      * @return true if the hand is a full house
      */
     private boolean fullHouseChecker() {
-        //todo implement full house checker
-        return false;
+        // 3 of a kind and 2 of a kind
+        return (threeKindChecker() && pairChecker());
     }
 
     /**
@@ -94,8 +97,13 @@ public class Analyser {
      * @return true if the hand is a flush
      */
     private boolean flushChecker() {
-        //todo implement flush checker
-        return false;
+        //loop through suit array and check if all suits are the same
+        for (int i = 0; i < suits.length - 1; i++) {
+            if (!suits[i].equals(suits[i + 1])) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -103,8 +111,13 @@ public class Analyser {
      * @return true if the hand is a straight
      */
     private boolean straightChecker() {
-        //todo implement straight checker
-        return false;
+        // check if the values are consecutive
+        for (int i = 0; i < values.length - 1; i++) {
+            if (values[i] + 1 != values[i + 1]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -112,17 +125,29 @@ public class Analyser {
      * @return true if the hand is a three of a kind
      */
     private boolean threeKindChecker() {
-        //todo implement three of a kind checker
-        return false;
+        // checks if 3 cards with same value
+        for (int i = 0; i < values.length - 2; i++) {
+            if (values[i] == values[i + 1] && values[i + 1] == values[i + 2]) {
+                return true;
+            }
+        }
+    return false;
     }
+
 
     /**
      * Checks if the hand is a two pair
      * @return true if the hand is a two pair
      */
     private boolean twoPairChecker() {
-        //todo implement two pair checker
-        return false;
+    // checks if there are two pairs
+        int pairCount = 0;
+        for (int i = 0; i < values.length - 1; i++) {
+            if (values[i] == values[i + 1]) {
+                pairCount++;
+            }
+        }
+        return pairCount == 2;
     }
 
     /**
@@ -130,16 +155,21 @@ public class Analyser {
      * @return true if the hand is a pair
      */
     private boolean pairChecker() {
-        //todo implement pair checker
+        // checks if 2 cards have the same value
+        for (int i = 0; i < values.length - 1; i++) {
+            if (values[i] == values[i + 1]) {
+                return true;
+            }
+        }
         return false;
     }
 
     /**
      * Checks if the hand is a high card
-     * @return true if the hand is a high card
+     * @return highest card
      */
     private String highCardChecker() {
-        //todo implement high card checker
-        return null;
+        // returns the highest card
+        return String.valueOf(values[values.length - 1]);
     }
 }
