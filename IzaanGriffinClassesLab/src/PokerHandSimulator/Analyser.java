@@ -1,4 +1,4 @@
-package classintro.PokerHandSimulator;
+package PokerHandSimulator;
 
 public class Analyser {
 
@@ -16,7 +16,18 @@ public class Analyser {
      * @param array the array to be sorted
      */
     private void sortingAlgorithm(int[] array) {
-        //todo implement sorting algorithm
+        int temp;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 1; j < (array.length - i); j++) {
+                if (array[j - 1] > array[j]) {
+                    //swap elements
+                    temp = array[j - 1];
+                    array[j - 1] = array[j];
+                    array[j] = temp;
+                }
+
+            }
+        }
     }
 
     /**
@@ -32,21 +43,11 @@ public class Analyser {
         // converts the values to integers
         for (int i = 0; i < tempValues.length; i++) {
             switch (tempValues[i]) {
-                case "ACE":
-                    values[i] = 14;
-                    break;
-                case "KING":
-                    values[i] = 13;
-                    break;
-                case "QUEEN":
-                    values[i] = 12;
-                    break;
-                case "JACK":
-                    values[i] = 11;
-                    break;
-                default:
-                    values[i] = Integer.parseInt(tempValues[i]);
-                    break;
+                case "ACE" -> values[i] = 14;
+                case "KING" -> values[i] = 13;
+                case "QUEEN" -> values[i] = 12;
+                case "JACK" -> values[i] = 11;
+                default -> values[i] = Integer.parseInt(tempValues[i]);
             }
         }
 
@@ -70,7 +71,7 @@ public class Analyser {
         } else if (pairChecker()) {
             return "Pair";
         } else {
-            return highCardChecker();
+            return "High Card";
         }
     }
 
