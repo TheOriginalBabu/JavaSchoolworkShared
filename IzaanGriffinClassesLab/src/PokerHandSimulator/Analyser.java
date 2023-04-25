@@ -24,9 +24,30 @@ public class Analyser {
      * @return the best hand
      */
     public String bestHandFinder(Hand hand) {
+        String[] tempValues = new String[5];
         for (int i = 0; i < hand.hand.length; i++) {
-            values[i] = Integer.parseInt(hand.hand[i].value);
+            tempValues[i] = hand.hand[i].value;
             suits[i] = hand.hand[i].suit;
+        }
+        // converts the values to integers
+        for (int i = 0; i < tempValues.length; i++) {
+            switch (tempValues[i]) {
+                case "ACE":
+                    values[i] = 14;
+                    break;
+                case "KING":
+                    values[i] = 13;
+                    break;
+                case "QUEEN":
+                    values[i] = 12;
+                    break;
+                case "JACK":
+                    values[i] = 11;
+                    break;
+                default:
+                    values[i] = Integer.parseInt(tempValues[i]);
+                    break;
+            }
         }
 
         sortingAlgorithm(values);
@@ -81,6 +102,7 @@ public class Analyser {
                 return true;
             }
         }
+        return false;
     }
 
     /**

@@ -26,7 +26,7 @@ public class StatisticAnalyser {
     public void handCounter(Deck deck, Analyser analyser) {
         Hand hand;
         try {
-            for (int i = 0; i < 1000000; i++) {
+            for (int i = 0; i < 1000; i++) {
                 hand = new Hand((Deck) deck.clone());
                 switch (analyser.bestHandFinder(hand)) {
                     case "Royal Flush" -> handCount[0]++;
