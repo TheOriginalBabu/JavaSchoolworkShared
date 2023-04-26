@@ -81,7 +81,7 @@ public class Analyser {
      */
     private boolean royalFlushChecker() {
         //royal flush is a straight flush with a high card of 10
-        return (flushChecker() && straightChecker() && highCardChecker().equals("ACE"));
+        return (straightFlushChecker() && highCardChecker().equals("ACE"));
     }
 
     /**
