@@ -1,7 +1,20 @@
 package PokerHandSimulator;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        StatisticAnalyser analyser = new StatisticAnalyser();
+        Scanner scan = new Scanner(System.in);
+        long hands;
+        while(true) {
+            try {
+                System.out.print("Enter the number of hands to be simulated: ");
+                hands = scan.nextInt();
+                StatisticAnalyser analyser = new StatisticAnalyser(hands);
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid input");
+            }
+        }
     }
 }

@@ -6,13 +6,17 @@ public class StatisticAnalyser {
 
     public int[] handCount = new int[10];
     public String[] handNames = {"Royal Flush", "Straight Flush", "Four of a Kind", "Full House", "Flush", "Straight", "Three of a Kind", "Two Pair", "Pair", "High Card"};
-    public int totalHands = 10000000;
-    private static final DecimalFormat df = new DecimalFormat("0.000");
+    public double[] actualHandPercents = {0.000154, 0.00139, 0.0240, 0.1441, 0.1965, 0.3925, 2.1128, 4.7539, 42.2569, 50.1177};
+    public long totalHands;
+    private static final DecimalFormat df = new DecimalFormat("0.00000");
 
     /**
      * Constructor for the StatisticAnalyser class
      */
-    public StatisticAnalyser() {
+    public StatisticAnalyser(long hands) {
+
+        this.totalHands = hands;
+
         Analyser analyser = new Analyser();
 
         handCounter(analyser);
@@ -50,13 +54,17 @@ public class StatisticAnalyser {
      */
     public void printHandPercents() {
         double[] handPercents = new double[10];
+        String paddedHandName;
 
         for (int i = 0; i < handCount.length; i++) {
             handPercents[i] = ((double) handCount[i] / totalHands) * 100;
         }
 
+        System.out.println("Hand Type\t\t|\tResults\t\t|\tExpected\t|\tDifference\n---------------------------------------------------------------");
+
         for (int i = 0; i < handPercents.length; i++) {
-            System.out.println(handNames[i] + ": " +  df.format(handPercents[i]) + "%");
+            paddedHandName = String.format("%-13s", handNames[i]);
+            System.out.println(paddedHandName + "\t|\t" +  df.format(handPercents[i]) + "%\t|\t" + df.format(actualHandPercents[i]) + "%\t|\t" + (df.format(handPercents[i] - actualHandPercents[i])) + "%");
         }
     }
 }

@@ -81,7 +81,7 @@ public class Analyser {
      */
     private boolean royalFlushChecker() {
         //royal flush is a straight flush with a high card of 10
-        return (straightFlushChecker() && highCardChecker().equals("ACE"));
+        return (straightFlushChecker() && highCardChecker().equals("14"));
     }
 
     /**
@@ -112,7 +112,8 @@ public class Analyser {
      */
     private boolean fullHouseChecker() {
         // 3 of a kind and 2 of a kind
-        return (threeKindChecker() && pairChecker());
+        int temp = threeKindChecker(true);
+        return (threeKindChecker() && pairChecker(temp));
     }
 
     /**
@@ -148,13 +149,28 @@ public class Analyser {
      * @return true if the hand is a three of a kind
      */
     private boolean threeKindChecker() {
-        // checks if 3 cards with same value
+        // checks if there are 3 cards with the same value
         for (int i = 0; i < values.length - 2; i++) {
             if (values[i] == values[i + 1] && values[i + 1] == values[i + 2]) {
                 return true;
             }
         }
-    return false;
+        return false;
+    }
+
+    /**
+     * Checks if the hand is a three of a kind
+     * @param returnInt if true, returns the value of the three of a kind
+     * @return the value of the three of a kind
+     */
+    private int threeKindChecker(boolean returnInt) {
+        // checks if there are 3 cards with the same value
+        for (int i = 0; i < values.length - 2; i++) {
+            if (values[i] == values[i + 1] && values[i + 1] == values[i + 2]) {
+                return values[i];
+            }
+        }
+        return 0;
     }
 
 
@@ -185,6 +201,22 @@ public class Analyser {
             }
         }
         return false;
+    }
+
+    /**
+     * Checks if the hand is a pair
+     * @param notThisOne the value of the card that is not part of the pair
+     * @return true if the hand is a pair
+     */
+    private boolean pairChecker(int notThisOne) {
+        // checks if 2 cards have the same value
+        for (int i = 0; i < values.length - 1; i++) {
+            if (values[i] == values[i + 1] && values[i] != notThisOne) {
+                return true;
+            }
+        }
+        return false;
+
     }
 
     /**
