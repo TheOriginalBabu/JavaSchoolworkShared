@@ -10,6 +10,7 @@ public class Main {
             try {
                 System.out.print("Enter the number of hands to be simulated: ");
                 hands = scan.nextInt();
+                System.out.println();
                 StatisticAnalyser analyser = new StatisticAnalyser(hands);
                 break;
             } catch (Exception e) {
